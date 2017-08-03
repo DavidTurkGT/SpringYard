@@ -4,6 +4,7 @@ import com.turkcodes.springyard.model.Customer;
 import com.turkcodes.springyard.repository.CustomerRepository;
 import com.turkcodes.springyard.repository.CustomerRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by David Turk on 8/3/17.
  */
+@Service
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepository customerRepository;
@@ -38,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Transactional
     @Override
-    public void deleteCustomer(int id) {
-        customerRepository.deleteCustomer(id);
+    public void deleteCustomer(Customer customer) {
+        customerRepository.deleteCustomer(customer);
     }
 }

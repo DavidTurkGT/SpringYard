@@ -1,3 +1,14 @@
+.heading {
+    border-bottom: 1px solid;
+}
+
+.nav {
+  display: flex;
+  width: 20vw;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+}
+
 .container {
     background-color: red;
 }

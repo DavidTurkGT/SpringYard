@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -32,13 +33,24 @@ public class MainController {
 //        return "customerpage";
 //    }
 
-    @RequestMapping("/add")
+    @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String getAddCustomerPage(){
         return "new";
     }
 
-    @RequestMapping( path = "/add", method = RequestMethod.POST)
-    public String addNewCustomer(){
-        return "index";
+    @RequestMapping( path = "/add_customer", method = RequestMethod.POST)
+    public String addNewCustomer(@RequestParam(value="firstname") String firstName,
+                                 @RequestParam(value="lastname") String lastName,
+                                 @RequestParam(value="phone") String phone,
+                                 @RequestParam(value="email") String email,
+                                 Model model){
+        Customer newCustomer = new Customer();
+        newCustomer.setFirstname(firstName);
+        newCustomer.setLastname(lastName);
+        newCustomer.setPhone(phone);
+        newCustomer.setEmail(email);
+        customerService.addCustomer(newCustomer);
+
+        return "redirect:/";
     }
 }

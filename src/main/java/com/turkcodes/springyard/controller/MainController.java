@@ -5,9 +5,7 @@ import com.turkcodes.springyard.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,10 +26,15 @@ public class MainController {
         return "index";
     }
 
-//    @RequestMapping("/view/:customerId")
-//    public String getCustomerPage(){
-//        return "customerpage";
-//    }
+    @RequestMapping("/{id}")
+    public String getCustomerPage(@PathVariable int id, Model model){
+        Customer desiredCustomer = customerService.getCustomerById(id);
+        System.out.println("You wish to look at this customer:");
+        System.out.println(desiredCustomer);
+
+        model.addAttribute("customer", desiredCustomer);
+        return "customerpage";
+    }
 
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String getAddCustomerPage(){

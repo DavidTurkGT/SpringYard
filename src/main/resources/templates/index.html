@@ -26,7 +26,7 @@
         </thead>
         <tbody>
           <tr th:each="customer : ${customers}">
-              <td><span th:text="${customer.id}"></span></td>
+              <td><a th:href="@{${customer.id}}" th:text="${customer.id}"></a></td>
               <td><span th:text="${customer.firstname}"></span></td>
               <td><span th:text="${customer.lastname}"></span></td>
               <td><span th:text="${customer.phone}"></span></td>

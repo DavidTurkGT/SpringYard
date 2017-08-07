@@ -1,8 +1,13 @@
 package com.turkcodes.springyard.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Created by David Turk on 8/3/17.
  */
+@Entity
+@Table(name = "customers")
 public class Customer {
     private int id;
     private String firstname;

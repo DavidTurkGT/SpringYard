@@ -2,7 +2,6 @@ package com.turkcodes.springyard.service;
 
 import com.turkcodes.springyard.model.Customer;
 import com.turkcodes.springyard.repository.CustomerRepository;
-import com.turkcodes.springyard.repository.CustomerRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,28 +18,28 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Transactional
     @Override
-    public void addCustomer(Customer customer) {
-        customerRepository.addCustomer(customer);
+    public Customer addCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Override
     public List<Customer> getAllCustomers() {
-        return customerRepository.getAllCustomers();
+        return customerRepository.findAll();
     }
     @Override
     public Customer getCustomerById(int id) {
-        return customerRepository.getCustomerById(id);
+        return customerRepository.findOne(id);
     }
 
     @Transactional
     @Override
-    public void updateCustomer(Customer customer) {
-        customerRepository.updateCustomer(customer);
+    public Customer updateCustomer(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Transactional
     @Override
     public void deleteCustomer(Customer customer) {
-        customerRepository.deleteCustomer(customer);
+        customerRepository.delete(customer);
     }
 }

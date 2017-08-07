@@ -1,14 +1,15 @@
 package com.turkcodes.springyard.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 /**
  * Created by David Turk on 8/3/17.
  */
 @Entity
 @Table(name = "customers")
 public class Customer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstname;
     private String lastname;
@@ -25,6 +26,8 @@ public class Customer {
         this.email = email;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -33,6 +36,7 @@ public class Customer {
         this.id = id;
     }
 
+    @Column(name = "firstname")
     public String getFirstname() {
         return firstname;
     }
@@ -41,6 +45,7 @@ public class Customer {
         this.firstname = firstname;
     }
 
+    @Column(name = "lastname")
     public String getLastname() {
         return lastname;
     }
@@ -49,6 +54,7 @@ public class Customer {
         this.lastname = lastname;
     }
 
+    @Column(name = "phone")
     public String getPhone() {
         return phone;
     }
@@ -57,6 +63,7 @@ public class Customer {
         this.phone = phone;
     }
 
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
